@@ -69,5 +69,40 @@ export default [
             '@typescript-eslint/no-unused-vars': 'off',
             'no-unused-vars': 'off'
         }
+    },
+    {
+        files: ['scripts/**/*.{js,ts}'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: {
+                console: 'readonly',
+                process: 'readonly',
+                Buffer: 'readonly',
+                __dirname: 'readonly',
+                __filename: 'readonly'
+            }
+        },
+        rules: {
+            // Relax rules for CLI scripts
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-unsafe-return': 'off',
+            '@typescript-eslint/no-unsafe-call': 'off',
+            'no-unused-vars': 'off'
+        }
+    },
+    {
+        files: ['scripts/templates/**/*'],
+        rules: {
+            // Ignore all rules for template files
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-unsafe-return': 'off',
+            '@typescript-eslint/no-unsafe-call': 'off',
+            '@typescript-eslint/no-unused-vars': 'off',
+            'no-unused-vars': 'off',
+            'no-undef': 'off'
+        }
     }
 ]

@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { el } from '@elemaudio/core'
 import { useControls, button } from 'leva'
-import { useAudioEngine } from '../audio/useAudioEngine'
-
-// Import Leva config to ensure it's loaded
-import '../index.css'
+import { useElementaryAudioEngine } from '../hooks/useElementaryAudioEngine'
 
 // Status display using controlled inputs pattern
 function StatusDisplay({ isInitialized, isPlaying }: { isInitialized: boolean; isPlaying: boolean }) {
@@ -24,9 +21,9 @@ function StatusDisplay({ isInitialized, isPlaying }: { isInitialized: boolean; i
     return null
 }
 
-export function SineSynthWithLeva() {
+export function __NAME__() {
     const [isPlaying, setIsPlaying] = useState(false)
-    const { isInitialized, start, stop, render } = useAudioEngine()
+    const { isInitialized, start, stop, render } = useElementaryAudioEngine()
 
     // Transport controls at the top - always enabled
     useControls('Transport', {
@@ -93,7 +90,7 @@ export function SineSynthWithLeva() {
         <div className="p-6">
             <StatusDisplay isInitialized={isInitialized} isPlaying={isPlaying} />
             <div className="text-center text-sm text-gray-400 mt-4">
-                Elementary Audio v4 + Leva Controls
+                __NAME__ with Leva Controls
             </div>
         </div>
     )

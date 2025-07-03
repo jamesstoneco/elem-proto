@@ -14,6 +14,7 @@ goal is to create a fast to use iterative playground for both audio and ui eleme
 - 🎨 **Tailwind CSS + Radix UI** - Modern, accessible UI components
 - 📝 **TypeScript** - Strict type safety throughout
 - 🧠 **Jotai** - Lightweight state management
+- 🚀 **CLI Generator** - One-command sketch creation with auto-incrementing names
 
 ## Quick Start
 
@@ -38,39 +39,95 @@ Open [http://localhost:61000](http://localhost:61000) to view the playground.
 
 ```
 src/
-├── audio/              # Shared audio engine hook
-│   └── useAudioEngine.ts
-├── lib/                # Utility functions
-│   ├── utils.ts
-│   └── LevaWrapper.tsx
-└── synths/             # Audio synthesis components
-    ├── ui/             # Reusable UI components
-    │   └── Button.tsx
-    ├── SineSynth.tsx
-    ├── SineSynth.stories.tsx
-    ├── SineSynthWithLeva.tsx
-    └── SineSynthWithLeva.stories.tsx
+├── sketches/           # Audio synthesis components
+│   ├── audio/          # Shared audio engine hook
+│   │   └── useAudioEngine.ts
+│   ├── ui/             # Reusable UI components
+│   │   └── Button.tsx
+│   ├── SineSynthWithLeva.tsx
+│   └── SineSynthWithLeva.stories.tsx
+├── components/         # UI components
+│   ├── TestComponent.tsx
+│   └── TestComponent.stories.tsx
+└── lib/                # Utility functions
+    ├── utils.ts
+    └── LevaWrapper.tsx
 ```
 
-## Adding New Synths
+## Developer Experience
 
-1. Create a new synth component in `src/synths/`
+This project is optimized for rapid audio prototyping with a focus on developer experience:
+
+### 🚀 Fast Sketch Creation
+- **One command**: `npm run generate` or `npm run g`
+- **Auto-prompting**: No name? Get prompted with auto-incrementing suggestions
+- **Auto-incrementing**: `sketch001`, `sketch002`, etc.
+- **Template-based**: Consistent patterns and boilerplate
+- **Leva-first**: All sketches come with real-time controls
+
+### 🎯 Convention Over Configuration
+- **Consistent naming**: `ComponentNameWithLeva.tsx` + `ComponentNameWithLeva.stories.tsx`
+- **Standard patterns**: All sketches follow the same structure
+- **Automatic stories**: Story files are generated automatically
+- **Smart defaults**: Sensible parameter ranges and controls
+
+### 🔧 CLI Commands
+```bash
+# Create a new sketch (prompts for name)
+npm run generate
+
+# Create with specific name
+npm run generate oscillator
+
+# Create UI component
+npm run generate component knob
+
+# Short alias
+npm run g filter
+```
+
+## Adding New Sketches
+
+Use the CLI generator for the fastest workflow:
+
+```bash
+# Generate a new sketch (will prompt for name if not provided)
+npm run generate
+
+# Or with a specific name
+npm run generate oscillator
+
+# Short alias
+npm run g filter
+```
+
+The generator will:
+1. Create a new sketch component in `src/sketches/` with Leva controls
+2. Create a corresponding story file automatically
+3. Use auto-incrementing filenames (sketch001, sketch002, etc.)
+4. Follow established patterns and conventions
+
+### Manual Creation
+
+If you prefer to create files manually:
+
+1. Create a new sketch component in `src/sketches/`
 2. Create a corresponding story file with `.stories.tsx` extension
 3. Use the `useAudioEngine` hook for audio initialization
-4. Optionally use Leva controls for real-time parameter adjustment
+4. Include Leva controls for real-time parameter adjustment
 
 ### Example
 
 ```tsx
-// src/synths/MySynth.tsx
-import { useAudioEngine } from '../audio/useAudioEngine'
+// src/sketches/MySketchWithLeva.tsx
+import { useAudioEngine } from './audio/useAudioEngine'
 import { el } from '@elemaudio/core'
 
-export function MySynth() {
+export function MySketchWithLeva() {
   const { isInitialized, start, stop, render } = useAudioEngine()
   
-  // Your synth logic here
-  return <div>My Synth</div>
+  // Your sketch logic here
+  return <div>My Sketch</div>
 }
 ```
 
@@ -181,19 +238,11 @@ useControls('Transport', {
 ```
 
 ```tsx
-// src/synths/MySynth.stories.tsx
-import type { Meta, StoryObj } from '@ladle/react'
-import { MySynth } from './MySynth'
+// src/sketches/MySketchWithLeva.stories.tsx
+import type { Story } from '@ladle/react'
+import { MySketchWithLeva } from './MySketchWithLeva'
 
-const meta: Meta<typeof MySynth> = {
-  title: 'Synths/MySynth',
-  component: MySynth,
-}
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Default: Story = {}
+export const Default: Story = () => <MySketchWithLeva />
 ```
 
 ## Available Scripts
@@ -208,6 +257,10 @@ export const Default: Story = {}
 
 ## TODO
 
+- [x] CLI scaffolding for rapid sketch creation
+- [x] Auto-incrementing sketch names
+- [x] Template-based generation
+- [x] Leva-first approach
 - [ ] Knob UI kit for better parameter control
 - [ ] Multi-voice synthesis examples
 - [ ] Effects processing (reverb, delay, etc.)

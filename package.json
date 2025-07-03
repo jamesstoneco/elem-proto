@@ -4,15 +4,22 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "ladle dev",
+        "dev": "concurrently \"npm run dev-ui\" \"npm run type-check:watch\" --names \"UI,TSC\" --prefix-colors \"blue,green\"",
+        "dev-ui": "ladle",
         "start": "npm run dev",
-        "build": "ladle build",
+        "build": "npm run type-check && ladle build",
         "preview": "ladle preview",
         "type-check": "tsc --noEmit",
+        "type-check:watch": "tsc --noEmit --watch",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "lint:fix": "npm run lint -- --fix",
         "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-        "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\""
+        "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+        "generate": "node scripts/generate.js",
+        "g": "npm run generate",
+        "test": "vitest run",
+        "increment": "node scripts/increment.js",
+        "inc": "npm run increment"
     },
     "dependencies": {
         "@elemaudio/core": "^4.0.1",
@@ -35,6 +42,7 @@
         "@typescript-eslint/eslint-plugin": "^8.35.0",
         "@typescript-eslint/parser": "^8.35.0",
         "autoprefixer": "^10.4.14",
+        "concurrently": "^9.2.0",
         "eslint": "^9.29.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-prettier": "^5.5.1",
@@ -43,6 +51,7 @@
         "postcss": "^8.4.24",
         "prettier": "^3.6.1",
         "tailwindcss": "^3.3.2",
-        "typescript": "^5.8.3"
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.4"
     }
 }

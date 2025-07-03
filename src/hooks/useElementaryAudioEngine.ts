@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import WebRenderer from '@elemaudio/web-renderer'
 
-export interface AudioEngine {
+export interface ElementaryAudioEngine {
     renderer: WebRenderer | null
     isInitialized: boolean
     start: () => Promise<void>
@@ -9,7 +9,7 @@ export interface AudioEngine {
     render: (node: unknown) => void
 }
 
-export function useAudioEngine(): AudioEngine {
+export function useElementaryAudioEngine(): ElementaryAudioEngine {
     const rendererRef = useRef<WebRenderer | null>(null)
     const audioContextRef = useRef<AudioContext | null>(null)
     const [isInitialized, setIsInitialized] = useState(false)
@@ -37,9 +37,9 @@ export function useAudioEngine(): AudioEngine {
 
             rendererRef.current = renderer
             setIsInitialized(true)
-            console.log('Audio engine initialized successfully')
+            console.log('Elementary Audio engine initialized successfully')
         } catch (error) {
-            console.error('Failed to initialize audio engine:', error)
+            console.error('Failed to initialize Elementary Audio engine:', error)
         }
     }
 
