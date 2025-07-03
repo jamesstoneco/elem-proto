@@ -1,20 +1,130 @@
 # Elementary Audio Playground
 
-A blazingly fast Elementary Audio playground inside Ladle for rapid audio synthesis prototyping.
+A blazingly fast [Elementary Audio](https://www.elementary.audio/) playground inside Ladle for rapid audio synthesis prototyping.
 
-# background
+## Getting Started
 
-goal is to create a fast to use iterative playground for both audio and ui elements. react and typescript focused.
+### Quick Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Generate your first sketch:**
+   ```bash
+   npm run gen
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+### Recommended Workflow
+
+For the best development experience, use **2 terminal tabs/windows**:
+
+**Terminal 1** - Development server:
+```bash
+npm start
+```
+
+**Terminal 2** - Generate new sketches:
+```bash
+npm run gen
+```
+
+### Development Features
+
+- **Hot Module Replacement (HMR)** - Instant updates as you code
+- **Live reloads** - See changes immediately in the browser
+- **TypeScript** - Better IDE code completion and type safety
+- **TypeScript errors** - Check the web server console for any TS issues
+
+Open [http://localhost:61000](http://localhost:61000) to view the playground.
+
+## Next Steps: Iterative Development
+
+### Generate New Sketches
+
+After getting started, create your first sketch:
+
+```bash
+npm run gen
+```
+
+The tooling will automatically increment sketch numbers for you (sketch001, sketch002, etc.).
+
+### Iterative Workflow
+
+**Creative coding thrives on iteration.** Here's the recommended workflow:
+
+1. **Generate** a new sketch: `npm run gen`
+2. **Experiment** with audio parameters and synthesis techniques
+3. **Save** your work (auto-saved with HMR)
+4. **Copy/iterate** the last sketch to build upon your ideas
+5. **Repeat** - each iteration builds on the previous one
+
+### Why Bottom-Up Design?
+
+This playground embraces **bottom-up design** and **creative coding techniques**:
+
+- **Rapid Prototyping** - Start with simple oscillators, build complexity gradually
+- **Exploration-First** - Let the code guide your creative process, not rigid planning
+- **Emergent Behavior** - Complex audio systems emerge from simple building blocks
+- **Learning Through Doing** - Discover new techniques through experimentation
+- **Incremental Complexity** - Each sketch adds one new concept or technique
+
+**Creative coding philosophy**: Start with the smallest working example, then iterate and expand. The best audio synthesis ideas often come from unexpected combinations discovered through rapid experimentation.
+
+## Why This Approach?
+
+### Better Than SRVB
+
+[SRVB](https://www.elementary.audio/srvb) is excellent for structured audio development, but it's too heavy and rigid for rapid iteration:
+
+- **Too structured** - Forces you into predefined workflows
+- **Heavy setup** - Requires more configuration for simple experiments
+- **Slower iteration** - More steps between idea and execution
+- **Overkill for prototyping** - Better suited for production audio applications
+
+### Better Than CodePen
+
+CodePen and similar online playgrounds leave a lot to be desired for audio development:
+
+- **Limited TypeScript support** - No autocomplete or type safety
+- **No CLI tools** - Manual file creation and management
+- **Poor audio debugging** - Limited console access and debugging tools
+- **No local development** - Can't use your preferred editor or tools
+- **Version control challenges** - Hard to track iterations and changes
+
+### Why This Playground?
+
+This setup gives you the best of both worlds:
+
+- **Your editor of choice** - Use VS Code, Vim, or any editor you prefer
+- **Full TypeScript benefits** - Autocomplete, type safety, and IntelliSense
+- **CLI scaffolding** - Generate new sketches instantly with `npm run gen`
+- **Rapid iteration** - Hot reload and instant feedback
+- **Version control** - Git integration for tracking your creative process
+- **Local development** - Full control over your development environment
+
+---
+
+## Background
+
+Goal is to create a fast to use iterative playground for both audio and ui elements. React and TypeScript focused.
 
 ## Features
 
-- 🎵 **Elementary Audio v4** - Real-time audio synthesis
-- ⚡ **Ladle** - Fast React component playground with HMR
-- 🎛️ **Leva** - Beautiful controls for real-time parameter tweaking
-- 🎨 **Tailwind CSS + Radix UI** - Modern, accessible UI components
-- 📝 **TypeScript** - Strict type safety throughout
-- 🧠 **Jotai** - Lightweight state management
-- 🚀 **CLI Generator** - One-command sketch creation with auto-incrementing names
+- **Elementary Audio v4** - Real-time audio synthesis
+- **Ladle** - Fast React component playground with HMR
+- **Leva** - Beautiful controls for real-time parameter tweaking
+- **Tailwind CSS + Radix UI** - Modern, accessible UI components
+- **TypeScript** - Strict type safety throughout
+- **Jotai** - Lightweight state management
+- **CLI Generator** - One-command sketch creation with auto-incrementing names
 
 ## Quick Start
 
@@ -58,20 +168,20 @@ src/
 
 This project is optimized for rapid audio prototyping with a focus on developer experience:
 
-### 🚀 Fast Sketch Creation
+### Fast Sketch Creation
 - **One command**: `npm run generate` or `npm run g`
 - **Auto-prompting**: No name? Get prompted with auto-incrementing suggestions
 - **Auto-incrementing**: `sketch001`, `sketch002`, etc.
 - **Template-based**: Consistent patterns and boilerplate
 - **Leva-first**: All sketches come with real-time controls
 
-### 🎯 Convention Over Configuration
+### Convention Over Configuration
 - **Consistent naming**: `ComponentNameWithLeva.tsx` + `ComponentNameWithLeva.stories.tsx`
 - **Standard patterns**: All sketches follow the same structure
 - **Automatic stories**: Story files are generated automatically
 - **Smart defaults**: Sensible parameter ranges and controls
 
-### 🔧 CLI Commands
+### CLI Commands
 ```bash
 # Create a new sketch (prompts for name)
 npm run generate
