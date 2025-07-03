@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Position Leva on the left side to avoid interfering with Ladle menu */
+#leva__root {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: 1000 !important;
+}
+
+/* Ensure Leva doesn't interfere with Ladle's UI */
+#leva__root > div {
+  max-height: 100vh !important;
+  overflow-y: auto !important;
+} 
